@@ -24,12 +24,12 @@ public class Sudoku {
         while(!gameEnd) {
             switch (this.state) {
                 case INPUT:
-                    try{
-                        c = Input.getInput();
-                    }catch (IllegalArgumentException e){
-                        e.printStackTrace();
-                    }
                     this.state = GameStates.UPDATE;
+                    try{
+                        c = Input.getCoordinatesInput();
+                    }catch (IllegalArgumentException e){
+                        this.state = GameStates.INPUT;
+                    }
                     break;
                 case UPDATE:
                     this.state = GameStates.OUTPUT;
