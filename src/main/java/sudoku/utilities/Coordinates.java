@@ -1,11 +1,20 @@
 package sudoku.utilities;
 
-public class Cooridinates {
+public class Coordinates {
     private int x, y;
 
-    public Cooridinates(int x, int y) {
+    public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Coordinates(Integer x, Integer y) {
+        if(x != null && y != null)
+        {
+            this.x = x.intValue();
+            this.y = y.intValue();
+        }
+
     }
 
     public int getX() {
@@ -28,7 +37,7 @@ public class Cooridinates {
     public boolean equals(Object obj) {
         if(obj == null) return false;
         if(obj.getClass() != this.getClass()) return false;
-        Cooridinates temp = (Cooridinates)  obj;
+        Coordinates temp = (Coordinates)  obj;
         return (this.x == temp.x) &&
                 (this.y == temp.y);
     }
