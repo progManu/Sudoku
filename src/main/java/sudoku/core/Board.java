@@ -1,7 +1,7 @@
 package sudoku.core;
 
 import sudoku.render.Display;
-import sudoku.utilities.Cooridinates;
+import sudoku.utilities.Coordinates;
 
 import java.util.Random;
 
@@ -32,7 +32,7 @@ public class Board implements Display {
 
         int numberOfCellsToFill = rand.nextInt(MAX_CELLS_TO_FILL + 1);
         for (int i = 0; i < numberOfCellsToFill; i++) {
-            Cooridinates pos = new Cooridinates(rand.nextInt(BOARD_SIZE), rand.nextInt(BOARD_SIZE));
+            Coordinates pos = new Coordinates(rand.nextInt(BOARD_SIZE), rand.nextInt(BOARD_SIZE));
             grid[pos.getX()][pos.getY()] = genPossibleNumber(instance);
         }
 
@@ -44,13 +44,13 @@ public class Board implements Display {
         return rand.nextInt(9);
     }
 
-    public int getBoardCell(Cooridinates c){
+    public int getBoardCell(Coordinates c){
         return this.grid[c.getX()][c.getY()];
     }
 
     @Override
     public boolean drawTerminal() {
-        Cooridinates tempCoord = new Cooridinates(0, 0);
+        Coordinates tempCoord = new Coordinates(0, 0);
 
         for(int i = 0; i <  BOARD_SIZE; i++){
             for(int j = 0; j < BOARD_SIZE; j++){
