@@ -1,11 +1,13 @@
 package sudoku.core;
 
+import sudoku.render.Display;
 import sudoku.utilities.Cooridinates;
 
 import java.util.Random;
 
-public class Board {
-    private static final int BOARD_SIZE = 9;
+class Board implements Display {
+
+    public static final int BOARD_SIZE = 9;
     private static final int MAX_CELLS_TO_FILL = 50;
     private int[][] grid;
     private static final Random rand = new Random();
@@ -44,6 +46,26 @@ public class Board {
 
     public int getBoardCell(Cooridinates c){
         return this.grid[c.getX()][c.getY()];
+    }
+
+    @Override
+    public boolean drawTerminal() {
+        Cooridinates tempCoord = new Cooridinates(0, 0);
+
+        for(int i = 0; i <  BOARD_SIZE; i++){
+            for(int j = 0; j < BOARD_SIZE; j++){
+                tempCoord.setX(i);
+                tempCoord.setY(j);
+                System.out.print(" " + this.getBoardCell(tempCoord) + " ");
+            }
+            System.out.println();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean drawUI() {
+        return false;
     }
 
 }
