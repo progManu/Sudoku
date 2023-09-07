@@ -5,9 +5,9 @@ import sudoku.utilities.Cooridinates;
 
 import java.util.Random;
 
-class Board implements Display {
+public class Board implements Display {
 
-    public static final int BOARD_SIZE = 9;
+    protected static final int BOARD_SIZE = 9;
     private static final int MAX_CELLS_TO_FILL = 50;
     private int[][] grid;
     private static final Random rand = new Random();
