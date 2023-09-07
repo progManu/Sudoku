@@ -9,9 +9,4 @@ public class DrawTest {
         Board b = Board.getInstance();
         assert(b.drawTerminal());
     }
-
-    @Test
-    public void prova(){
-        assert(false);
-    }
 }
