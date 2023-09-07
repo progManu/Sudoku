@@ -7,12 +7,21 @@ import java.util.Scanner;
 public class Input {
     private final static Scanner scanner = new Scanner(System.in);
 
-    protected static Coordinates getInput() throws IllegalArgumentException {
+    protected static Coordinates getCoordinatesInput() throws IllegalArgumentException {
         System.out.println("Insert x, y coordinates: ");
         String input = scanner.nextLine();
         String[] stringCoordinates = input.split("\\.");
 
         return checkAndReturnCoord(stringCoordinates);
+    }
+
+    protected static int getValueInput() throws IllegalArgumentException {
+        System.out.println("Insert number value: ");
+        int input = scanner.nextInt();
+
+        if(input > 9 || input < 1) throw new IllegalArgumentException("Coordinates out of bounds");
+
+        return input;
     }
 
     public static Coordinates checkAndReturnCoord(String[] numberStringsArray) throws IllegalArgumentException{
@@ -21,8 +30,8 @@ public class Input {
         Coordinates coordinate = new Coordinates(Integer.parseInt(numberStringsArray[0]),
                 Integer.parseInt(numberStringsArray[1]));
 
-        if ((coordinate.getX() > Board.BOARD_SIZE || coordinate.getX() < 0) ||
-                (coordinate.getY() > Board.BOARD_SIZE || coordinate.getY() < 0))
+        if ((coordinate.getX() > Board.BOARD_SIZE || coordinate.getX() < 1) ||
+                (coordinate.getY() > Board.BOARD_SIZE || coordinate.getY() < 1))
         {
             throw new IllegalArgumentException("Coordinates out of bounds");
         }
