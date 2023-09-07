@@ -32,4 +32,9 @@ public class Cooridinates {
         return (this.x == temp.x) &&
                 (this.y == temp.y);
     }
+
+    @Override
+    public String toString() {
+        return "{" + this.getX() + "," + this.getY() + "}";
+    }
 }

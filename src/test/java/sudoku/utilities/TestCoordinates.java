@@ -11,4 +11,12 @@ public class TestCoordinates {
 
         assert(c1.equals(c2) && !c1.equals(null) && !c2.equals(new Object()));
     }
+
+    @Test
+    public void testPrintStrings(){
+        Cooridinates c1 = new Cooridinates(1, 3);
+        String result = "{1, 3}";
+
+        assert(result.equals(c1.toString()));
+    }
 }
