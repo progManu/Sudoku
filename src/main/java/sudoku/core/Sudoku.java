@@ -20,8 +20,10 @@ public class Sudoku {
     }
 
     public void run(){
+
         Coordinates cell = null;
         int cellValue = -1;
+
         while(!gameEnd) {
             switch (this.state) {
                 case INPUT:
@@ -35,6 +37,7 @@ public class Sudoku {
                     }
                     break;
                 case UPDATE:
+                    board.setCellValue(cell, cellValue);
                     this.state = GameStates.OUTPUT;
                     break;
                 case OUTPUT:
