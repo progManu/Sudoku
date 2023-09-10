@@ -2,6 +2,7 @@ package sudoku.core;
 
 import sudoku.utilities.Coordinates;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Input {
@@ -10,7 +11,9 @@ public class Input {
     protected static Coordinates getCoordinatesInput() throws IllegalArgumentException {
         System.out.println("Insert x, y coordinates: ");
         String input = scanner.nextLine();
-        String[] stringCoordinates = input.split("\\.");
+        String[] stringCoordinates = input
+                .replaceAll("\\s", "")
+                .split(",");
 
         return checkAndReturnCoord(stringCoordinates);
     }
@@ -18,6 +21,7 @@ public class Input {
     protected static int getValueInput() throws IllegalArgumentException {
         System.out.println("Insert number value: ");
         int input = scanner.nextInt();
+        scanner.nextLine(); // This is done because there is a return character that is not captured by the scanner
 
         if(input > 9 || input < 1) throw new IllegalArgumentException("Coordinates out of bounds");
 
@@ -25,6 +29,7 @@ public class Input {
     }
 
     public static Coordinates checkAndReturnCoord(String[] numberStringsArray) throws IllegalArgumentException{
+
         if (numberStringsArray.length != 2) throw new IllegalArgumentException("Wrong Number of Parameters");
 
         Coordinates coordinate = new Coordinates(Integer.parseInt(numberStringsArray[0]),
