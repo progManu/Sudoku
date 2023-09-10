@@ -63,9 +63,14 @@ public class Board implements Display {
         return true;
     }
 
+    // TODO: implement drawUI() method with JAVAFX
     @Override
     public boolean drawUI() {
         return false;
+    }
+
+    protected void setCellValue(Coordinates coordinate, int value){
+        this.grid[coordinate.getX()][coordinate.getY()] = value;
     }
 
 }
