@@ -20,14 +20,17 @@ public class Sudoku {
     }
 
     public void run(){
-        Coordinates c = null;
+        Coordinates cell = null;
+        int cellValue = -1;
         while(!gameEnd) {
             switch (this.state) {
                 case INPUT:
                     this.state = GameStates.UPDATE;
                     try{
-                        c = Input.getCoordinatesInput();
+                        cellValue = Input.getValueInput();
+                        cell = Input.getCoordinatesInput();
                     }catch (IllegalArgumentException e){
+                        e.printStackTrace();
                         this.state = GameStates.INPUT;
                     }
                     break;
