@@ -41,6 +41,9 @@ public class Input {
             throw new IllegalArgumentException("Coordinates out of bounds");
         }
 
+        coordinate.setX(coordinate.getX() - 1);
+        coordinate.setY(coordinate.getY() - 1);
+
         return coordinate;
     }
 }
