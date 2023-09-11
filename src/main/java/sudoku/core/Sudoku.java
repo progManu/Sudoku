@@ -37,11 +37,11 @@ public class Sudoku {
                     }
                     break;
                 case UPDATE:
-                    board.setCellValue(cell, cellValue);
+                    board.setGridValue(cell, cellValue);
                     this.state = GameStates.OUTPUT;
                     break;
                 case OUTPUT:
-                    board.drawTerminal();
+                    System.out.println(board.toString());
                     this.state = GameStates.INPUT;
                     break;
             }
