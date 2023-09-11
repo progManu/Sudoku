@@ -35,14 +35,14 @@ public class Input {
         Coordinates coordinate = new Coordinates(Integer.parseInt(numberStringsArray[0]),
                 Integer.parseInt(numberStringsArray[1]));
 
-        if ((coordinate.getX() > Board.BOARD_SIZE || coordinate.getX() < 1) ||
-                (coordinate.getY() > Board.BOARD_SIZE || coordinate.getY() < 1))
+        if ((coordinate.getX() >= Board.BOARD_SIZE || coordinate.getX() < 0) ||
+                (coordinate.getY() >= Board.BOARD_SIZE || coordinate.getY() < 0))
         {
             throw new IllegalArgumentException("Coordinates out of bounds");
         }
 
-        coordinate.setX(coordinate.getX() - 1);
-        coordinate.setY(coordinate.getY() - 1);
+        coordinate.setX(coordinate.getX());
+        coordinate.setY(coordinate.getY());
 
         return coordinate;
     }
