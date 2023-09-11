@@ -4,7 +4,7 @@ import sudoku.utilities.Coordinates;
 
 public class Sudoku {
     private final Board board = Board.getInstance();
-    GameStates state = GameStates.INPUT;
+    GameStates state = GameStates.OUTPUT;
     private boolean gameEnd = false;
 
     private static Sudoku instance = null;
@@ -37,8 +37,17 @@ public class Sudoku {
                     }
                     break;
                 case UPDATE:
-                    board.setGridValue(cell, cellValue);
                     this.state = GameStates.OUTPUT;
+
+                    try{
+                        boolean checkRes = Rules.checkAddingNumber(board, cell, cellValue);
+                        if (checkRes) {board.setGridValue(cell, cellValue);}
+                        else {this.state = GameStates.INPUT;}
+                    }catch (IllegalArgumentException e){
+                        e.printStackTrace();
+                        this.state = GameStates.INPUT;
+                    }
+
                     break;
                 case OUTPUT:
                     System.out.println(board.toString());
