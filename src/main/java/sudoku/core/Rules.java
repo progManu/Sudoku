@@ -17,26 +17,31 @@ public class Rules {
     }
 
     public static boolean checkRow(BaseBoard board, Coordinates coordinate, int value){
+        Integer objValue = Integer.valueOf(value);
         //Check row
         for(int i = 0; i < Board.BOARD_SIZE; i++){
             Coordinates inspectedCoord = new Coordinates(coordinate.getX(), i);
             Integer inspectedValue = board.getGrid()[inspectedCoord.getX()][inspectedCoord.getY()];
-            if (!coordinate.equals(inspectedCoord) && inspectedValue.equals(value)) return false;
+            if (!coordinate.equals(inspectedCoord) && objValue.equals(inspectedValue)) return false;
         }
 
         return true;
     }
 
     public static boolean checkColumn(BaseBoard board, Coordinates coordinate, int value) {
+        Integer objValue = Integer.valueOf(value);
+
         for(int i = 0; i < Board.BOARD_SIZE; i++){
             Coordinates inspectedCoord = new Coordinates(i, coordinate.getY());
             Integer inspectedValue = board.getGrid()[inspectedCoord.getX()][inspectedCoord.getY()];
-            if (!coordinate.equals(inspectedCoord) && inspectedValue.equals(value)) return false;
+            if (!coordinate.equals(inspectedCoord) && objValue.equals(inspectedValue)) return false;
         }
         return true;
     }
 
     public static boolean checkQuadrant(BaseBoard board, Coordinates coordinate, int value){
+        Integer objValue = Integer.valueOf(value);
+
         Coordinates quadrantCoord = new Coordinates(coordinate.getX() / 3, coordinate.getY() / 3);
 
         // Check quadrant
@@ -44,7 +49,7 @@ public class Rules {
             for(int j = 0; j < Board.BOARD_SIZE / 3; j++){
                 Coordinates inspectedCoord = new Coordinates(quadrantCoord.getX() +  i, quadrantCoord.getY() + j);
                 Integer inspectedValue = board.getGrid()[inspectedCoord.getX()][inspectedCoord.getY()];
-                if (!coordinate.equals(inspectedCoord) && inspectedValue.equals(value)) return false;
+                if (!coordinate.equals(inspectedCoord) && objValue.equals(inspectedValue)) return false;
             }
         }
 
