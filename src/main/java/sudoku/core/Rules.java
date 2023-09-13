@@ -56,4 +56,15 @@ public class Rules {
         return true;
     }
 
+    protected static boolean isGameEnded(Board board){
+        for(int i = 0; i < Board.BOARD_SIZE; i++){
+            for(int j = 0; j < Board.BOARD_SIZE; j++){
+                if (board.getGrid()[i][j] == null)
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
 }
