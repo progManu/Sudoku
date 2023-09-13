@@ -1,7 +1,5 @@
 package sudoku.core;
 
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
 import sudoku.utilities.Coordinates;
 
 public class Sudoku {
