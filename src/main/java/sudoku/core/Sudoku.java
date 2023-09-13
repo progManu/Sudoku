@@ -1,5 +1,7 @@
 package sudoku.core;
 
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import sudoku.utilities.Coordinates;
 
 public class Sudoku {
@@ -24,14 +26,14 @@ public class Sudoku {
         Coordinates cell = null;
         int cellValue = -1;
 
-        while(!gameEnd) {
+        while(!Rules.isGameEnded(this.board)) {
             switch (this.state) {
                 case INPUT:
                     this.state = GameStates.UPDATE;
-                    try{
+                    try {
                         cellValue = Input.getValueInput();
                         cell = Input.getCoordinatesInput();
-                    }catch (IllegalArgumentException e){
+                    } catch (IllegalArgumentException e) {
                         e.printStackTrace();
                         this.state = GameStates.INPUT;
                     }
