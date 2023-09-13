@@ -11,6 +11,10 @@ public class TestBoard extends BaseBoard {
         this.createNewGrid();
     }
 
+    protected TestBoard(Integer[][] grid){
+        this.createGridFromExisting(grid);
+    }
+
     private void genPossibleNumber(Integer[][] grid, Coordinates coordinate) {
         grid[coordinate.getX()][coordinate.getY()] = randomGenerator.nextInt(9);
     }
@@ -23,6 +27,15 @@ public class TestBoard extends BaseBoard {
                 Coordinates inspectedCoord = new Coordinates(i, j);
                 this.grid[inspectedCoord.getX()][inspectedCoord.getY()] = value;
                 value++;
+            }
+        }
+    }
+
+    protected void createGridFromExisting(Integer[][] grid){
+        for(int i = 0; i < BOARD_SIZE; i++){
+            for(int j = 0; j < Board.BOARD_SIZE; j++){
+                Coordinates inspectedCoord = new Coordinates(i, j);
+                this.grid[inspectedCoord.getX()][inspectedCoord.getY()] = grid[inspectedCoord.getX()][inspectedCoord.getY()];
             }
         }
     }

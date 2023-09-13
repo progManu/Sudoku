@@ -25,4 +25,24 @@ public class TestRules {
         boolean result = Rules.checkQuadrant(testBoard, new Coordinates(1, 1), 1);
         assert(!result);
     }
+
+    @Test
+    public void testEndGame(){
+        Integer[][] fullGrid =  {
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1}
+        };
+
+        TestBoard testBoard = new TestBoard(fullGrid);
+
+        boolean result = Rules.isGameEnded(testBoard);
+        assert(result);
+    }
 }
